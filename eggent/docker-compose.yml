@@ -23,6 +23,10 @@ services:
       - "${APP_BIND_HOST:-0.0.0.0}:${APP_PORT:-3000}:3000"
     volumes:
       - ./data:/app/data
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ollama:/root/.ollama
+    environment:
+      - OLLAMA_HOST=0.0.0.0
     extra_hosts:
       - "host.docker.internal:host-gateway"
       - "olap:${MSSQL_HOST:-10.10.6.15}"
@@ -41,3 +45,6 @@ services:
       timeout: 5s
       retries: 10
       start_period: 20s
+
+volumes:
+  ollama:

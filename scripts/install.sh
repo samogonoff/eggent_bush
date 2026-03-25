@@ -28,8 +28,10 @@ if [ -d "$INSTALL_DIR/eggent" ]; then
     DOCKER_DIR="$INSTALL_DIR/eggent"
 fi
 
-echo "=== DEBUG: DOCKER_DIR is $DOCKER_DIR ==="
-ls -la "$DOCKER_DIR"/.env* 2>/dev/null || echo "No .env files found"
+if ! command -v ollama &> /dev/null; then
+    echo "Installing Ollama..."
+    curl -fsSL https://ollama.com/install.sh | sh
+fi
 
 if [ -f "$DOCKER_DIR/.env.example" ]; then
     if [ ! -f "$DOCKER_DIR/.env" ]; then
