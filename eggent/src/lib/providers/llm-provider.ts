@@ -205,20 +205,18 @@ export function createModel(config: ModelConfig): LanguageModel {
       const apiKey = config.apiKey || process.env.OPENCODE_API_KEY || "";
       const model = config.model;
       
-      // Determine endpoint and settings based on model type
-      let baseUrl = "https://opencode.ai/zen/v1";
+      // Use custom baseUrl if provided, otherwise default to opencode.ai
+      let baseUrl = config.baseUrl || "https://opencode.ai/zen/v1";
       let useResponsesApi = false;
       let useAnthropic = false;
       let useGoogle = false;
       
       // GPT models use /v1/responses
       if (model.startsWith("gpt-")) {
-        baseUrl = "https://opencode.ai/zen/v1";
         useResponsesApi = true;
       }
       // Claude models use /v1/messages (Anthropic)
       else if (model.startsWith("claude-")) {
-        baseUrl = "https://opencode.ai/zen/v1";
         useAnthropic = true;
       }
       // Gemini models use /v1/models/{model}
@@ -228,7 +226,7 @@ export function createModel(config: ModelConfig): LanguageModel {
       }
       // Others use /v1/chat/completions (OpenAI compatible)
       else {
-        baseUrl = "https://opencode.ai/zen/v1";
+        // default baseUrl
       }
       
       if (useAnthropic) {
