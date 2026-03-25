@@ -42,6 +42,13 @@ else
     echo "WARNING: .env.example not found"
 fi
 
+if [ -d "$DOCKER_DIR/data" ]; then
+    chmod -R 777 "$DOCKER_DIR/data"
+else
+    mkdir -p "$DOCKER_DIR/data"
+    chmod -R 777 "$DOCKER_DIR/data"
+fi
+
 ls -la "$DOCKER_DIR"/.env* 2>/dev/null
 
 if [ -f "$DOCKER_DIR/docker-compose.yml" ]; then
