@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  searxng:
+    image: ghcr.io/searxng/searxng:latest
+    container_name: searxng
+    ports:
+      - "8080:8080"
+    environment:
+      - SEARXNG_METHOD=GET
+      - SEARXNG_LIMITER=false
+      - SEARXNG_IMAGE_PROXY=false
+    volumes:
+      - searxng-config:/etc/searxng
+      - searxng-data:/var/cache/searxng
+
+volumes:
+  searxng-config:
+  searxng-data:
