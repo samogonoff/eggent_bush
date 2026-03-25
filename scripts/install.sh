@@ -35,12 +35,12 @@ if [ -f "$DOCKER_DIR/docker-compose.yml" ]; then
     elif command -v docker &> /dev/null; then
         echo "Starting with docker compose (V2)..."
         cd "$DOCKER_DIR" && docker compose up -d
+    else
+        echo "Docker is not installed. Please install Docker first."
+        exit 1
     fi
 else
     echo "docker-compose.yml not found in $DOCKER_DIR"
-else
-    echo "Docker is not installed. Please install Docker first."
-    exit 1
 fi
 
 echo "Eggent Bush installed successfully!"
