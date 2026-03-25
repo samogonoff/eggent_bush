@@ -1,0 +1,36 @@
+{
+  "provider": {
+    "ollama": {
+      "npm": "@ai-sdk",
+      "name": "Ollama (local)",
+      "options": {
+        "baseURL": "http://192.168.1.3",
+        "apiKey": "ollama"
+      },
+      "models": {
+        "qwen3-coder:30b": { "name": "qwen3-coder:30b" },
+        "glm-4.7-flash": { "name": "glm-4.7-flash" },
+        "qwen2.5-coder:14b": { "name": "qwen2.5-coder:14b" }
+      }
+    },
+    "yandex": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "YandexGPT",
+      "options": {
+        "baseURL": "https://llm.api.cloud.yandex.net",
+        "apiKey": "AQVN0iqAWau59BdUzt-3Ih9ocOc2uyfYN4RPOoQM",
+        "folderId": "b1gqc16agtqj53p7i1jf"
+      },
+      "models": {
+        "yandexgpt/latest": { "name": "YandexGPT Pro" }
+      }
+    }
+  },
+  "mcp": {
+    "MCP_DOCKER": {
+      "type": "local",
+      "command": ["docker", "mcp", "gateway", "run"],
+      "enabled": true
+    }
+  }
+}
