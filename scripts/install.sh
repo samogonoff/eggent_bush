@@ -45,3 +45,4 @@ fi
 
 echo "Eggent Bush installed successfully!"
 echo "Access at: http://localhost:3000"
+echo "Version: 1.0.1"
