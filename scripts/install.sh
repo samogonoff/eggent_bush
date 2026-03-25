@@ -28,6 +28,10 @@ if [ -d "$INSTALL_DIR/eggent" ]; then
     DOCKER_DIR="$INSTALL_DIR/eggent"
 fi
 
+echo "DOCKER_DIR: $DOCKER_DIR"
+echo "Looking for .env.example in $DOCKER_DIR..."
+ls -la "$DOCKER_DIR/" | head -10
+
 if [ -f "$DOCKER_DIR/.env.example" ] && [ ! -f "$DOCKER_DIR/.env" ]; then
     echo "Creating .env from .env.example..."
     cp "$DOCKER_DIR/.env.example" "$DOCKER_DIR/.env"
