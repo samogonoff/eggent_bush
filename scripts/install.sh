@@ -28,6 +28,11 @@ if [ -d "$INSTALL_DIR/eggent" ]; then
     DOCKER_DIR="$INSTALL_DIR/eggent"
 fi
 
+if [ -f "$DOCKER_DIR/.env.example" ] && [ ! -f "$DOCKER_DIR/.env" ]; then
+    echo "Creating .env from .env.example..."
+    cp "$DOCKER_DIR/.env.example" "$DOCKER_DIR/.env"
+fi
+
 if [ -f "$DOCKER_DIR/docker-compose.yml" ]; then
     if command -v docker-compose &> /dev/null; then
         echo "Starting with docker-compose..."
