@@ -28,14 +28,21 @@ if [ -d "$INSTALL_DIR/eggent" ]; then
     DOCKER_DIR="$INSTALL_DIR/eggent"
 fi
 
-echo "DOCKER_DIR: $DOCKER_DIR"
-echo "Looking for .env.example in $DOCKER_DIR..."
-ls -la "$DOCKER_DIR/" | head -10
+echo "=== DEBUG: DOCKER_DIR is $DOCKER_DIR ==="
+ls -la "$DOCKER_DIR"/.env* 2>/dev/null || echo "No .env files found"
 
-if [ -f "$DOCKER_DIR/.env.example" ] && [ ! -f "$DOCKER_DIR/.env" ]; then
-    echo "Creating .env from .env.example..."
-    cp "$DOCKER_DIR/.env.example" "$DOCKER_DIR/.env"
+if [ -f "$DOCKER_DIR/.env.example" ]; then
+    if [ ! -f "$DOCKER_DIR/.env" ]; then
+        echo "Copying .env.example to .env ..."
+        cp "$DOCKER_DIR/.env.example" "$DOCKER_DIR/.env"
+    else
+        echo ".env already exists"
+    fi
+else
+    echo "WARNING: .env.example not found"
 fi
+
+ls -la "$DOCKER_DIR"/.env* 2>/dev/null
 
 if [ -f "$DOCKER_DIR/docker-compose.yml" ]; then
     if command -v docker-compose &> /dev/null; then
@@ -54,4 +61,3 @@ fi
 
 echo "Eggent Bush installed successfully!"
 echo "Access at: http://localhost:3000"
-echo "Version: 1.0.1"
