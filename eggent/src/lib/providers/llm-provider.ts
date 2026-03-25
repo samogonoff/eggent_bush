@@ -57,7 +57,8 @@ function createOpenAICompatibleChatModel(
   config: ModelConfig,
   settings: OpenAICompatibleSettings
 ): LanguageModel {
-  const baseURL = normalizeBaseUrl(config.baseUrl, settings);
+  const rawBaseUrl = config.baseUrl || settings.fallbackBaseUrl || undefined;
+  const baseURL = normalizeBaseUrl(rawBaseUrl, settings);
   const provider = createOpenAI({
     apiKey: settings.apiKey,
     baseURL,
@@ -248,7 +249,7 @@ export function createModel(config: ModelConfig): LanguageModel {
       return createOpenAICompatibleChatModel(config, {
         providerName: "opencode",
         apiKey,
-        baseUrl,
+        fallbackBaseUrl: "https://opencode.ai/zen/v1",
         defaultPath: useResponsesApi ? "" : "/chat/completions",
       });
     }
