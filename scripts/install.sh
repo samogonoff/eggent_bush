@@ -23,12 +23,21 @@ fi
 
 cd "$INSTALL_DIR"
 
-if command -v docker-compose &> /dev/null; then
-    echo "Starting with docker-compose..."
-    docker-compose up -d
-elif command -v docker &> /dev/null; then
-    echo "Starting with docker compose (V2)..."
-    docker compose up -d
+DOCKER_DIR="$INSTALL_DIR"
+if [ -d "$INSTALL_DIR/eggent" ]; then
+    DOCKER_DIR="$INSTALL_DIR/eggent"
+fi
+
+if [ -f "$DOCKER_DIR/docker-compose.yml" ]; then
+    if command -v docker-compose &> /dev/null; then
+        echo "Starting with docker-compose..."
+        cd "$DOCKER_DIR" && docker-compose up -d
+    elif command -v docker &> /dev/null; then
+        echo "Starting with docker compose (V2)..."
+        cd "$DOCKER_DIR" && docker compose up -d
+    fi
+else
+    echo "docker-compose.yml not found in $DOCKER_DIR"
 else
     echo "Docker is not installed. Please install Docker first."
     exit 1
