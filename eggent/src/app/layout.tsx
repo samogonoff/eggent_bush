@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Eggent",
+  title: "MFagent",
   description: "AI Agent Terminal - Execute code, manage memory, search the web",
 };
 

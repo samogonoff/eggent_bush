@@ -21,7 +21,7 @@ export function SiteHeader({ title }: { title?: string }) {
         </Button>
         <Separator orientation="vertical" className="mr-2 h-4" />
         <h1 className="text-sm font-medium">
-          {title || "Eggent"}
+          {title || "MFagent"}
         </h1>
       </div>
     </header>

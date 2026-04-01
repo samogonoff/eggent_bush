@@ -167,7 +167,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                   <Bot className="size-4" />
                 </div>
                 <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-medium">Eggent</span>
+                  <span className="truncate font-medium">MFagent</span>
                   <span className="truncate text-xs">Agent Terminal</span>
                 </div>
               </Link>
@@ -335,7 +335,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <SidebarMenuItem>
               <SidebarMenuButton asChild>
                 <a
-                  href="https://github.com/eggent-ai/eggent"
+                  href="https://github.com/samogonoff/eggent_bush/tree/v0.1.15"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

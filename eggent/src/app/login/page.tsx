@@ -70,7 +70,7 @@ function LoginPageClient() {
         <section className="w-full rounded-xl border bg-card p-6 shadow-sm">
           <div className="mb-6 flex items-center gap-2">
             <LockKeyhole className="size-5 text-primary" />
-            <h1 className="text-xl font-semibold">Eggent Login</h1>
+            <h1 className="text-xl font-semibold">MFagent Login</h1>
           </div>
 
           <p className="mb-6 text-sm text-muted-foreground">

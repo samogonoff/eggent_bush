@@ -1,4 +1,4 @@
-# Agent Guidelines for Eggent
+# Agent Guidelines for MFagent
 
 This file contains guidelines for agentic coding agents operating in this repository.
 
