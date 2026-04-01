@@ -36,7 +36,7 @@ export async function GET(
             })
         );
         return NextResponse.json(fileDetails);
-    } catch (error) {
+    } catch {
         return NextResponse.json(
             { error: "Failed to list knowledge files" },
             { status: 500 }

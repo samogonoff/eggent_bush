@@ -45,7 +45,8 @@ export async function embedTexts(
   } catch (error) {
     console.error("Embedding error:", error);
     throw new Error(
-      `Failed to generate embeddings: ${error instanceof Error ? error.message : String(error)}`
+      `Failed to generate embeddings: ${error instanceof Error ? error.message : String(error)}`,
+      { cause: error }
     );
   }
 }
