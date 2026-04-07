@@ -30,10 +30,11 @@ export async function GET(req: NextRequest) {
   try {
     const content = await fs.readFile(fullPath);
     const fileName = path.basename(filePath);
+    const safeFileName = fileName.replace(/[^\x00-\x7F]/g, "_");
 
     return new Response(content, {
       headers: {
-        "Content-Disposition": `attachment; filename="${fileName}"`,
+        "Content-Disposition": `attachment; filename="${safeFileName}"; filename*=UTF-8''${encodeURIComponent(fileName)}`,
         "Content-Type": "application/octet-stream",
       },
     });
